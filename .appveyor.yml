@@ -12,5 +12,4 @@ build_script:
       cd build
       cmake -G "Visual Studio 14 2015" ..
       cmake --build . --target ALL_BUILD
-      dir /s
-      cmake-qtcore-example
+      Debug\cmake-qtcore-example
