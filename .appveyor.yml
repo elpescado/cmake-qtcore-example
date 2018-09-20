@@ -13,6 +13,7 @@ image:
 build_script:
   - cmd: |-
       set CMAKE_PREFIX_PATH=%QTDIR%
+      set PATH=C:\MinGW\bin;%PATH%
       mkdir build
       cd build
       cmake -G "%GENERATOR%" ..
