@@ -19,7 +19,8 @@ build_script:
       cd build
       cmake -G "%GENERATOR%" ..
       REM cmake --build . --target ALL_BUILD
-      make
+      cmake --build . 
 
+      tree 
       set PATH=%PATH%;%QTDIR%\bin
       Debug\cmake-qtcore-example
