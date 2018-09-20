@@ -13,7 +13,7 @@ image:
 build_script:
   - cmd: |-
       set CMAKE_PREFIX_PATH=%QTDIR%
-      set PATH=C:\MinGW\bin;%PATH%
+      set PATH=C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\bin;%PATH%
       rename "C:\Program Files\Git\usr\bin\sh.exe" "sh2.exe"
       mkdir build
       cd build
