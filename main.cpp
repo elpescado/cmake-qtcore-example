@@ -16,7 +16,7 @@ QString getCompiler()
 	#if defined(__MINGW__)
 		QString name = "MinGW";
 	#else
-		QString name = "GCC"
+		QString name = "GCC";
 	#endif
 	return QString("%1 %2.%3.%4")
 		.arg(name)
