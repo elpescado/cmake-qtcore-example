@@ -1,7 +1,6 @@
 environment:
   QTDIR: "C:\\Qt\\5.11.1\\msvc2015"
   CMAKE_PREFIX_PATH: "C:\\Qt\\5.11.1\\msvc2015"
-  PATH: "C:\\Qt\\5.11.1\\msvc2015\\bin"
   
 image:
   - "Visual Studio 2015"
@@ -13,4 +12,6 @@ build_script:
       cd build
       cmake -G "Visual Studio 14 2015" ..
       cmake --build . --target ALL_BUILD
+
+      set PATH=%PATH%;%QTDIR%\bin
       Debug\cmake-qtcore-example
