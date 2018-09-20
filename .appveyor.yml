@@ -21,11 +21,9 @@ build_script:
       REM cmake --build . --target ALL_BUILD
       cmake --build . 
 
-      dumpbin /dependents cmake-qtcore-example.exe
-
       set PATH=%QTDIR%\bin;%PATH%
       rem Debug\cmake-qtcore-example
       cmake-qtcore-example
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+      #on_finish:
+      #  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
