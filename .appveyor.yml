@@ -15,7 +15,7 @@ build_script:
       set CMAKE_PREFIX_PATH=%QTDIR%
       mkdir build
       cd build
-      cmake -G %GENERATOR% ..
+      cmake -G "%GENERATOR%" ..
       cmake --build . --target ALL_BUILD
 
       set PATH=%PATH%;%QTDIR%\bin
