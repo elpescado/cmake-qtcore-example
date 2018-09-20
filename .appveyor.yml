@@ -1,6 +1,10 @@
 environment:
-  QTDIR: "C:\\Qt\\5.11.1\\msvc2015"
-  CMAKE_PREFIX_PATH: "C:\\Qt\\5.11.1\\msvc2015"
+  #CMAKE_PREFIX_PATH: "C:\\Qt\\5.11.1\\msvc2015"
+  #
+  #QTDIR: "C:\\Qt\\5.11.1\\msvc2015"
+  #GENERATOR: "Visual Studio 14 2015"
+  QTDIR: "C:\Qt\5.11.1\mingw53_32"
+  GENERATOR: "MinGW Makefiles"
   
 image:
   - "Visual Studio 2015"
@@ -8,9 +12,10 @@ image:
 
 build_script:
   - cmd: |-
+      set CMAKE_PREFIX_PATH=%QTDIR%
       mkdir build
       cd build
-      cmake -G "Visual Studio 14 2015" ..
+      cmake -G %GENERATOR% ..
       cmake --build . --target ALL_BUILD
 
       set PATH=%PATH%;%QTDIR%\bin
