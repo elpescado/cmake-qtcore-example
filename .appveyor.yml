@@ -21,6 +21,6 @@ build_script:
       REM cmake --build . --target ALL_BUILD
       cmake --build . 
 
-      tree 
       set PATH=%PATH%;%QTDIR%\bin
-      Debug\cmake-qtcore-example
+      rem Debug\cmake-qtcore-example
+      cmake-qtcore-example
