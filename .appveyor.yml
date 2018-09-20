@@ -3,8 +3,18 @@ environment:
   #
   #QTDIR: "C:\\Qt\\5.11.1\\msvc2015"
   #GENERATOR: "Visual Studio 14 2015"
-  QTDIR: "C:\\Qt\\5.11.1\\mingw53_32"
-  GENERATOR: "MinGW Makefiles"
+  matrix:
+    - ENV_NAME: MinGW 32
+      COMPILER: MinGW
+      QTDIR: "C:\\Qt\\5.11.1\\mingw53_32"
+      GENERATOR: "MinGW Makefiles"
+      SDK: "C:\\mingw-w64\\i686-5.3.0-posix-dwarf-rt_v4-rev0\\mingw32\\bin"
+
+    - ENV_NAME: MSVC 32
+      COMPILER: MSVC
+      QTDIR: "C:\\Qt\\5.11.1\\msvc2015"
+      GENERATOR: "Visual Studio 14 2015"
+      SDK: ""
   
 image:
   - "Visual Studio 2015"
@@ -13,17 +23,17 @@ image:
 build_script:
   - cmd: |-
       set CMAKE_PREFIX_PATH=%QTDIR%
-      set PATH=C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\mingw32\bin;%PATH%
+      set PATH=%SDK%;%PATH%
       rename "C:\Program Files\Git\usr\bin\sh.exe" "sh2.exe"
       mkdir build
       cd build
       cmake -G "%GENERATOR%" ..
-      REM cmake --build . --target ALL_BUILD
-      cmake --build . 
+      if [%COMPILER%]==[MSVC]  cmake --build . --target ALL_BUILD
+      if [%COMPILER%]==[MinGW] cmake --build . 
 
       set PATH=%QTDIR%\bin;%PATH%
-      rem Debug\cmake-qtcore-example
-      cmake-qtcore-example
+      if [%COMPILER%]==[MSVC]  Debug\cmake-qtcore-example
+      if [%COMPILER%]==[MinGW] cmake-qtcore-example
 
 #on_finish:
 #  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
