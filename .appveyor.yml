@@ -21,6 +21,8 @@ build_script:
       REM cmake --build . --target ALL_BUILD
       cmake --build . 
 
-      set PATH=%PATH%;%QTDIR%\bin
+      dumpbin /dependents cmake-qtcore-example
+
+      set PATH=%QTDIR%\bin;%PATH%
       rem Debug\cmake-qtcore-example
       cmake-qtcore-example
