@@ -1,3 +1,5 @@
+#include <set>
+
 #include <QDebug>
 #include <QString>
 
